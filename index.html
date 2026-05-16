@@ -106,6 +106,7 @@
       border-radius: 50%;
       border: 1px solid rgba(238, 176, 186, 0.5);
       pointer-events: none;
+      z-index: 2;
     }
 
     .slider-container {
@@ -114,6 +115,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 50%;
+      z-index: 1;
     }
 
     .slider-container img {
@@ -139,27 +141,26 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    /* Selo de Verificado Profissional Correto e Alinhado */
-    .verified-badge-container {
+    /* Selo de Verificado como badge sobre as imagens */
+    .profile-verified-badge {
+      position: absolute;
+      right: clamp(4px, 1.5vw, 8px);
+      bottom: clamp(4px, 1.5vw, 8px);
+      width: clamp(26px, 7.2vw, 32px);
+      height: clamp(26px, 7.2vw, 32px);
+      border-radius: 50%;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      margin-bottom: clamp(10px, 2.5vh, 18px);
+      box-shadow: 0 3px 10px rgba(118, 45, 55, 0.18);
+      z-index: 4;
     }
 
-    .verified-name {
-      font-size: clamp(13px, 3.5vw, 14.5px);
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--burgundy);
-    }
-
-    .verified-icon {
-      width: 16px;
-      height: 16px;
-      display: inline-block;
-      flex-shrink: 0;
+    .profile-verified-badge .verified-icon {
+      width: 82%;
+      height: 82%;
+      display: block;
     }
 
     /* Headline / Título Compacto */
@@ -428,7 +429,7 @@
       <!-- Logo Central -->
       <img src="imagens/logo-marisa-rodrigues.webp" alt="Marisa Rodrigues Nails & Hair" class="brand-logo" />
 
-      <!-- Círculo de Fotos Ampliado -->
+      <!-- Círculo de Fotos Ampliado com Badge Verificado -->
       <section class="profile-circle" aria-label="Fotos da profissional">
         <div class="slider-container">
           <img src="imagens/marisa-1.webp" alt="Marisa Rodrigues" />
@@ -436,16 +437,14 @@
           <img src="imagens/marisa-3.webp" alt="Marisa Rodrigues indicando serviço" />
           <img src="imagens/marisa-4.webp" alt="Marisa Rodrigues sentada" />
         </div>
-      </section>
 
-      <!-- Selo de Verificado Original Meta/Instagram -->
-      <div class="verified-badge-container">
-        <span class="verified-name">Marisa Rodrigues</span>
-        <svg class="verified-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Selo Verificado Oficial">
-          <path d="M12 0L14.6 2.6L18.2 2L19.4 5.5L22.9 6.2L22.4 9.8L25 12.4L22.4 15L22.9 18.6L19.4 19.3L18.2 22.8L14.6 22.2L12 24.8L9.4 22.2L5.8 22.8L4.6 19.3L1.1 18.6L1.6 15L0 12.4L1.6 9.8L1.1 6.2L4.6 5.5L5.8 2L9.4 2.6L12 0Z" fill="var(--verified-blue)"/>
-          <path d="M9.8 14.8L6.6 11.6L5.2 13L9.8 17.6L18.8 8.6L17.4 7.2L9.8 14.8Z" fill="white"/>
-        </svg>
-      </div>
+        <div class="profile-verified-badge" aria-label="Selo Verificado Oficial">
+          <svg class="verified-icon" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.5 12L20.1 14.7L20.4 18.3L16.9 19.1L15.1 22.2L12 20.7L8.9 22.2L7.1 19.1L3.6 18.3L3.9 14.7L1.5 12L3.9 9.3L3.6 5.7L7.1 4.9L8.9 1.8L12 3.3L15.1 1.8L16.9 4.9L20.4 5.7L20.1 9.3L22.5 12Z" fill="var(--verified-blue)"/>
+            <path d="M10.15 15.65L6.9 12.4L5.55 13.75L10.15 18.35L18.7 9.8L17.35 8.45L10.15 15.65Z" fill="#ffffff"/>
+          </svg>
+        </div>
+      </section>
 
       <section class="headline-container">
         <h1>Beleza no conforto<br>da <em>sua casa</em>
@@ -454,7 +453,6 @@
             <path d="M28 20.5 C30 21.5, 33 22, 36 21 C39 20, 41 18, 40 16" stroke="#be5a6b" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </h1>
-        <p>Atendimento domiciliar com<br>praticidade e cuidado</p>
       </section>
 
       <!-- Botão do WhatsApp Premium -->
